@@ -1,4 +1,4 @@
-openai = 1.35.3
+openai == 1.35.3
 chainlit == 1.1.300
 pydantic == 2.9.0
 # chainlit == 1.1.202
