@@ -1,0 +1,60 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Resources": {
+      "DynamoDBTable": {
+        "Type": "AWS::DynamoDB::Table",
+        "Properties": {
+          "TableName": "pbl_nt",
+          "AttributeDefinitions": [
+            {
+              "AttributeName": "PK",
+              "AttributeType": "S"
+            },
+            {
+              "AttributeName": "SK",
+              "AttributeType": "S"
+            },
+            {
+              "AttributeName": "UserThreadPK",
+              "AttributeType": "S"
+            },
+            {
+              "AttributeName": "UserThreadSK",
+              "AttributeType": "S"
+            }
+          ],
+          "KeySchema": [
+            {
+              "AttributeName": "PK",
+              "KeyType": "HASH"
+            },
+            {
+              "AttributeName": "SK",
+              "KeyType": "RANGE"
+            }
+          ],
+          "GlobalSecondaryIndexes": [
+            {
+              "IndexName": "UserThread",
+              "KeySchema": [
+                {
+                  "AttributeName": "UserThreadPK",
+                  "KeyType": "HASH"
+                },
+                {
+                  "AttributeName": "UserThreadSK",
+                  "KeyType": "RANGE"
+                }
+              ],
+              "Projection": {
+                "ProjectionType": "INCLUDE",
+                "NonKeyAttributes": ["id", "name"]
+              }
+            }
+          ],
+          "BillingMode": "PAY_PER_REQUEST"
+        }
+      }
+    }
+  }
+  

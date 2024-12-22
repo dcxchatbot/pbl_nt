@@ -11,6 +11,15 @@ import chainlit as cl
 from chainlit.config import config
 from chainlit.element import Element
 
+import chainlit.data as cl_data
+from chainlit.data.dynamodb import DynamoDBDataLayer
+
+cl_data._data_layer = DynamoDBDataLayer(table_name="pbl_nt")
+# from chainlit.data.storage_clients import S3StorageClient
+
+# storage_client = S3StorageClient(bucket="<Your Bucket>")
+# cl_data._data_layer = DynamoDBDataLayer(table_name="pbl_nt", storage_provider=storage_client)
+
 async_openai_client = AsyncOpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 sync_openai_client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 

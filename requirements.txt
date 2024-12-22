@@ -63,3 +63,4 @@ watchfiles==0.20.0
 wrapt==1.16.0
 wsproto==1.2.0
 zipp==3.21.0
+boto3==1.35.12
